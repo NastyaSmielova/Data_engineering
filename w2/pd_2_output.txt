@@ -1,0 +1,182 @@
+id                                                                     5099
+name                              Large Cozy 1 BR Apartment In Midtown East
+host_id                                                                7322
+host_name                                                             Chris
+neighbourhood_group                                               Manhattan
+neighbourhood                                                   Murray Hill
+latitude                                                           40.74767
+longitude                                                           -73.975
+room_type                                                   Entire home/apt
+price                                                                   200
+minimum_nights                                                            3
+number_of_reviews                                                        74
+last_review                                                      2019-06-22
+reviews_per_month                                                      0.59
+calculated_host_listings_count                                            1
+availability_365                                                        129
+price_category                                                       Medium
+length_of_stay_category                                          short-term
+Name: 5, dtype: object
+      neighbourhood_group
+0                Brooklyn
+1               Manhattan
+2               Manhattan
+3                Brooklyn
+4               Manhattan
+...                   ...
+48879            Brooklyn
+48880            Brooklyn
+48881           Manhattan
+48882           Manhattan
+48883           Manhattan
+
+[48884 rows x 1 columns]
+price    200
+Name: 5, dtype: object
+0        149
+1        225
+2        150
+3         89
+4         80
+        ...
+48879     70
+48880     40
+48881    115
+48882     55
+48883     90
+Name: price, Length: 48884, dtype: int64
+Total size before filtering:  928796
+Size after price filtering:  474373
+Size after num reviews filtering:  173679
+      neighbourhood_group  price  minimum_nights  number_of_reviews  \
+1               Manhattan    225               1                 45
+5               Manhattan    200               3                 74
+9               Manhattan    150               1                160
+10              Manhattan    135               5                 53
+14              Manhattan    120              90                 27
+...                   ...    ...             ...                ...
+46033           Manhattan    275               1                 13
+46084           Manhattan    500               1                 11
+46417           Manhattan    330               1                 13
+46880           Manhattan    320               1                 12
+46926           Manhattan    500               3                 14
+
+      price_category  availability_365
+1             Medium               355
+5             Medium               129
+9             Medium               188
+10            Medium                 6
+14            Medium                 0
+...              ...               ...
+46033         Medium               189
+46084           High               180
+46417           High               164
+46880           High               189
+46926           High                45
+
+[9141 rows x 6 columns]
+                                         price  minimum_nights  \
+neighbourhood_group price_category
+Bronx               High            424.800000        2.000000
+                    Medium          142.464646        3.363636
+Brooklyn            High            433.168317        4.884488
+                    Medium          160.894980        4.786880
+Manhattan           High            515.126761        5.429577
+                    Medium          172.955793        5.148409
+Queens              High            401.388889        3.194444
+                    Medium          157.146087        3.998261
+Staten Island       Medium          158.836735        2.061224
+
+                                    number_of_reviews  availability_365  \
+neighbourhood_group price_category
+Bronx               High                    42.800000        307.600000
+                    Medium                  45.222222        193.757576
+Brooklyn            High                    48.864686        185.900990
+                    Medium                  61.624577        141.537111
+Manhattan           High                    44.825352        176.502817
+                    Medium                  55.138207        123.767306
+Queens              High                    42.666667        267.611111
+                    Medium                  54.735652        184.979130
+Staten Island       Medium                  51.224490        211.530612
+
+                                    total_listing
+neighbourhood_group price_category
+Bronx               High                        5
+                    Medium                     99
+Brooklyn            High                      303
+                    Medium                   3247
+Manhattan           High                      710
+                    Medium                   4117
+Queens              High                       36
+                    Medium                    575
+Staten Island       Medium                     49
+                                         price  minimum_nights  \
+neighbourhood_group price_category
+Manhattan           High            515.126761        5.429577
+Brooklyn            High            433.168317        4.884488
+Bronx               High            424.800000        2.000000
+Queens              High            401.388889        3.194444
+Manhattan           Medium          172.955793        5.148409
+Brooklyn            Medium          160.894980        4.786880
+Staten Island       Medium          158.836735        2.061224
+Queens              Medium          157.146087        3.998261
+Bronx               Medium          142.464646        3.363636
+
+                                    number_of_reviews  availability_365  \
+neighbourhood_group price_category
+Manhattan           High                    44.825352        176.502817
+Brooklyn            High                    48.864686        185.900990
+Bronx               High                    42.800000        307.600000
+Queens              High                    42.666667        267.611111
+Manhattan           Medium                  55.138207        123.767306
+Brooklyn            Medium                  61.624577        141.537111
+Staten Island       Medium                  51.224490        211.530612
+Queens              Medium                  54.735652        184.979130
+Bronx               Medium                  45.222222        193.757576
+
+                                    total_listing
+neighbourhood_group price_category
+Manhattan           High                      710
+Brooklyn            High                      303
+Bronx               High                        5
+Queens              High                       36
+Manhattan           Medium                   4117
+Brooklyn            Medium                   3247
+Staten Island       Medium                     49
+Queens              Medium                    575
+Bronx               Medium                     99
+                                         price  minimum_nights  \
+neighbourhood_group price_category
+Bronx               High            424.800000        2.000000
+                    Medium          142.464646        3.363636
+Brooklyn            High            433.168317        4.884488
+                    Medium          160.894980        4.786880
+Manhattan           High            515.126761        5.429577
+                    Medium          172.955793        5.148409
+Queens              High            401.388889        3.194444
+                    Medium          157.146087        3.998261
+Staten Island       Medium          158.836735        2.061224
+
+                                    number_of_reviews  availability_365  \
+neighbourhood_group price_category
+Bronx               High                    42.800000        307.600000
+                    Medium                  45.222222        193.757576
+Brooklyn            High                    48.864686        185.900990
+                    Medium                  61.624577        141.537111
+Manhattan           High                    44.825352        176.502817
+                    Medium                  55.138207        123.767306
+Queens              High                    42.666667        267.611111
+                    Medium                  54.735652        184.979130
+Staten Island       Medium                  51.224490        211.530612
+
+                                    total_listing  rank
+neighbourhood_group price_category
+Bronx               High                        5     3
+                    Medium                     99     9
+Brooklyn            High                      303     2
+                    Medium                   3247     6
+Manhattan           High                      710     1
+                    Medium                   4117     5
+Queens              High                       36     4
+                    Medium                    575     8
+Staten Island       Medium                     49     7
