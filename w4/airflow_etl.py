@@ -5,12 +5,22 @@ from airflow.operators.python import PythonOperator
 
 from airflow import DAG
 from datetime import datetime
-
+from pathlib import Path
 
 def get_data(ti):
     print("Getting data from source")
-    df = pd.read_csv('data//AB_NYC_2019.csv')
-    ti.xcom_push(key="raw_data", value=df)
+    my_file = Path("data/AB_NYC_2019.csv")
+    if my_file.is_file():
+        try:
+            df = pd.read_csv(my_file)
+            ti.xcom_push(key="raw_data", value=df)
+        except:
+            print("Errors while reading the file")
+            raise ValueError('Errors while reading the file')
+
+    else:
+        print("No such file")
+        raise ValueError('No such file')
 
 
 def transform_data(ti):
