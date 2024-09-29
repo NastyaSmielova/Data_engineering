@@ -1,0 +1,67 @@
+Pivoted:
+ neighbourhood_group           Bronx                                 Brooklyn  \
+room_type           Entire home/apt Private room Shared room Entire home/apt
+price                    127.506596    66.890937        59.8      178.346202
+
+neighbourhood_group                                Manhattan               \
+room_type           Private room Shared room Entire home/apt Private room
+price                  76.545428   50.773723      249.257994   116.776622
+
+neighbourhood_group                      Queens                           \
+room_type           Shared room Entire home/apt Private room Shared room
+price                 88.977083      147.050573    71.762456   69.020202
+
+neighbourhood_group   Staten Island
+room_type           Entire home/apt Private room Shared room
+price                    173.846591    62.292553   57.444444
+
+Melt:
+              variable  value
+0               price    149
+1               price    225
+2               price    150
+3               price     89
+4               price     80
+...               ...    ...
+97763  minimum_nights      2
+97764  minimum_nights      4
+97765  minimum_nights     10
+97766  minimum_nights      1
+97767  minimum_nights      7
+
+[97768 rows x 2 columns]
+
+Correlations:
+                      availability_status     price  number_of_reviews  \
+availability_status             1.000000 -0.127850          -0.120645
+price                          -0.127850  1.000000          -0.032043
+number_of_reviews              -0.120645 -0.032043           1.000000
+neighbourhood_group            -0.120084  0.032943          -0.003766
+
+                     neighbourhood_group
+availability_status            -0.120084
+price                           0.032943
+number_of_reviews              -0.003766
+neighbourhood_group             1.000000
+
+Descriptive Statistics:
+              price  minimum_nights  number_of_reviews
+mean    152.755053        7.029887          23.271991
+std     240.170260       20.512224          44.551331
+median  106.000000        3.000000           5.000000
+
+Statistic monthly based:
+             price  minimum_nights
+month
+1      150.587514        7.469506
+2      155.716883        8.876623
+3      136.836957        9.510870
+4      139.504979        8.012328
+5      137.968291        7.366248
+6      140.821481        4.108584
+7      142.290382        3.668183
+8      132.133173        8.588482
+9      149.494463        7.157655
+10     142.157282        7.379935
+11     138.532815        8.443869
+12     160.796610        7.054802
