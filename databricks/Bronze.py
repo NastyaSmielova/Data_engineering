@@ -1,16 +1,34 @@
 # Databricks notebook source
 # MAGIC %md
 # MAGIC
-# MAGIC ## Overview
+# MAGIC ## Bronze table
 # MAGIC
-# MAGIC This notebook will show you how to create and query a table or DataFrame that you uploaded to DBFS. [DBFS](https://docs.databricks.com/user-guide/dbfs-databricks-file-system.html) is a Databricks File System that allows you to store data for querying inside of Databricks. This notebook assumes that you have a file already inside of DBFS that you would like to read from.
-# MAGIC
-# MAGIC This notebook is written in **Python** so the default cell type is Python. However, you can use different languages by using the `%LANGUAGE` syntax. Python, Scala, SQL, and R are all supported.
+# MAGIC This notebook will check for new files uploading into folder, and save data to Bronze table
+
+# COMMAND ----------
+
+import logging
+
+# COMMAND ----------
+
+# Create a logger
+logger = logging.getLogger("bronze_logger")
+logger.setLevel(logging.ERROR)
+
+# Create a file handler and set the log level
+file_handler = logging.FileHandler("error_bronze.log")
+file_handler.setLevel(logging.ERROR)
+
+# Create a formatter and add it to the file handler
+formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
+file_handler.setFormatter(formatter)
+
+# Add the file handler to the logger
+logger.addHandler(file_handler)
 
 # COMMAND ----------
 
 spark.sql("USE working_1.nyc_airbnb")
-
 
 # COMMAND ----------
 
@@ -60,17 +78,23 @@ bronze_table_name = "bronze_AB_NYC_2019"
 
 # Full table path including the database name
 bronze_full_table_name = f"{database_name}.{bronze_table_name}"
-# Create the Bronze table if it doesn't exist
-spark.sql(f"CREATE TABLE IF NOT EXISTS {bronze_full_table_name} USING DELTA")
-# Specify the checkpoint location
-checkpoint_location = "dbfs:/FileStore/checkpoints/"
-# Write the streaming DataFrame to the Bronze Delta table in the specified database
-query = df.writeStream \
-  .format("delta") \
-  .outputMode("append") \
-  .option("checkpointLocation", checkpoint_location) \
-  .option("mergeSchema", "true") \
-  .toTable(bronze_full_table_name)
 
-# Start the stream
-query.awaitTermination()
+try:
+
+  # Create the Bronze table if it doesn't exist
+  spark.sql(f"CREATE TABLE IF NOT EXISTS {bronze_full_table_name} USING DELTA")
+  # Specify the checkpoint location
+  checkpoint_location = "dbfs:/FileStore/checkpoints/"
+  # Write the streaming DataFrame to the Bronze Delta table in the specified database
+  query = df.writeStream \
+    .format("delta") \
+    .outputMode("append") \
+    .option("checkpointLocation", checkpoint_location) \
+    .option("mergeSchema", "true") \
+    .toTable(bronze_full_table_name)
+
+  # Start the stream
+  query.awaitTermination()
+except Exception as e:
+  # Log the error message
+  logger.error(str(e))

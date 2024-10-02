@@ -3,9 +3,7 @@
 # MAGIC
 # MAGIC ## Overview
 # MAGIC
-# MAGIC This notebook will show you how to create and query a table or DataFrame that you uploaded to DBFS. [DBFS](https://docs.databricks.com/user-guide/dbfs-databricks-file-system.html) is a Databricks File System that allows you to store data for querying inside of Databricks. This notebook assumes that you have a file already inside of DBFS that you would like to read from.
-# MAGIC
-# MAGIC This notebook is written in **Python** so the default cell type is Python. However, you can use different languages by using the `%LANGUAGE` syntax. Python, Scala, SQL, and R are all supported.
+# MAGIC File for creation and updating silver table, checking bronze for updates, transform the data and save into Silver table
 
 # COMMAND ----------
 
@@ -53,6 +51,10 @@ silver_df = silver_df.dropna(subset=["latitude", "longitude"])
 silver_df = silver_df.na.fill("2010-01-01", subset=["last_review"])
 # First, convert the 'last_review' column to a date type (if it's not already)
 silver_df = silver_df.withColumn("last_review", to_date("last_review", "yyyy-MM-dd"))
+
+
+
+# COMMAND ----------
 
 
 # Specify the checkpoint location
